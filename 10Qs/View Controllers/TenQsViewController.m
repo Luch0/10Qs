@@ -7,6 +7,8 @@
 //
 
 #import "TenQsViewController.h"
+#import "QuestionHeaderView.h"
+
 
 @interface TenQsViewController ()
 
@@ -17,25 +19,34 @@
 
 @implementation TenQsViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    [self.questionsTableView setDelegate:self];
-    [self.questionsTableView setDataSource:self];
+    [self setupQuestionsTableView];
     self.viewModel = [[TenQsViewModel alloc] init];
     [self.viewModel setDelegate:self];
     [self.viewModel fetchQuestions];
 }
 
+- (void)setupQuestionsTableView
+{
+    [self.questionsTableView setDelegate:self];
+    [self.questionsTableView setDataSource:self];
+    self.questionsTableView.sectionHeaderHeight = UITableViewAutomaticDimension;
+    self.questionsTableView.estimatedSectionHeaderHeight = 50;
+}
+
 #pragma mark TenQsViewModelDelegate
 
-- (void)viewModeldidFinishWith:(TenQsViewModelState)state {
+- (void)viewModeldidFinishWith:(TenQsViewModelState)state
+{
     switch (state) {
         case TenQsViewModelStateSucceed:
             NSLog(@"Succeed");
             [self.questionsTableView reloadData];
             break;
         case TenQsViewModelStateFail:
-            NSLog(@"Succeed");
+            NSLog(@"Fail");
             break;
     }
 }
@@ -55,12 +66,14 @@
     return [self.viewModel numberOfQuestions];
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    return [self.viewModel getQuestionTextAtSection:section];
+    UIView *questionHeaderView = [[QuestionHeaderView alloc]initWithFrame:CGRectZero question:[self.viewModel getQuestionTextAtSection:section]];
+    return questionHeaderView;
 }
 
-- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return [self.viewModel numberOfChoicesInQuestion:section];
 }
 

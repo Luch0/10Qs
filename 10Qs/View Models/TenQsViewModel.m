@@ -9,6 +9,7 @@
 #import "TenQsViewModel.h"
 #import <UIKit/UIKit.h>
 
+
 @implementation TenQsViewModel
 
 - (instancetype)init
@@ -34,22 +35,22 @@
 
 - (NSString *)getQuestionTextAtSection:(NSInteger)section
 {
-    return [[_questions objectAtIndex:section] question];
+    return [[self.questions objectAtIndex:section] question];
 }
 
 - (NSString *)getAnswerChoiceAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [[[_questions objectAtIndex:indexPath.section] allAnswers] objectAtIndex:indexPath.row];
+    return [[[self.questions objectAtIndex:indexPath.section] allAnswers] objectAtIndex:indexPath.row];
 }
 
 - (NSUInteger)numberOfQuestions
 {
-    return [_questions count];
+    return [self.questions count];
 }
 
 - (NSUInteger)numberOfChoicesInQuestion:(NSInteger)section
 {
-    return [[[_questions objectAtIndex:section] allAnswers] count];
+    return [[[self.questions objectAtIndex:section] allAnswers] count];
 }
 
 @end

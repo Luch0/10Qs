@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E2405859217412DA004C6C9F /* QuestionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2405858217412DA004C6C9F /* QuestionHeaderView.m */; };
 		E25B53F3216EDD0F00A11A6C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E25B53F2216EDD0F00A11A6C /* AppDelegate.m */; };
 		E25B53F9216EDD0F00A11A6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E25B53F7216EDD0F00A11A6C /* Main.storyboard */; };
 		E25B53FC216EDD0F00A11A6C /* _0Qs.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E25B53FA216EDD0F00A11A6C /* _0Qs.xcdatamodeld */; };
@@ -40,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E2405857217412DA004C6C9F /* QuestionHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuestionHeaderView.h; sourceTree = "<group>"; };
+		E2405858217412DA004C6C9F /* QuestionHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QuestionHeaderView.m; sourceTree = "<group>"; };
 		E25B53EE216EDD0F00A11A6C /* 10Qs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 10Qs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E25B53F1216EDD0F00A11A6C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E25B53F2216EDD0F00A11A6C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -92,6 +95,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E2405856217412B7004C6C9F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E2405857217412DA004C6C9F /* QuestionHeaderView.h */,
+				E2405858217412DA004C6C9F /* QuestionHeaderView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		E25B53E5216EDD0F00A11A6C = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				E25B5426216EDDD200A11A6C /* Supporting Files */,
+				E2405856217412B7004C6C9F /* Views */,
 				E25B5427216EDE3200A11A6C /* View Controllers */,
 				E25B542B216EE0AE00A11A6C /* Models */,
 				E25B542C216EE0C100A11A6C /* View Models */,
@@ -330,6 +343,7 @@
 				E25B5404216EDD1100A11A6C /* main.m in Sources */,
 				E25B542F216EE1F300A11A6C /* Question.m in Sources */,
 				E25B542A216EDE6400A11A6C /* TenQsViewController.m in Sources */,
+				E2405859217412DA004C6C9F /* QuestionHeaderView.m in Sources */,
 				E25B5436216EE6D600A11A6C /* NetworkService.m in Sources */,
 				E25B53FC216EDD0F00A11A6C /* _0Qs.xcdatamodeld in Sources */,
 				E25B5439216EEB7100A11A6C /* TenQsAPIClient.m in Sources */,
