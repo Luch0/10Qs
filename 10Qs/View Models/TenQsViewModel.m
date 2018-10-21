@@ -35,12 +35,14 @@
 
 - (NSString *)getQuestionTextAtSection:(NSInteger)section
 {
-    return [[self.questions objectAtIndex:section] question];
+    NSString *questionText = [[self.questions objectAtIndex:section] question];
+    return [self decodeString:questionText];
 }
 
 - (NSString *)getAnswerChoiceAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [[[self.questions objectAtIndex:indexPath.section] allAnswers] objectAtIndex:indexPath.row];
+    NSString *answerChoiceText = [[[self.questions objectAtIndex:indexPath.section] allAnswers] objectAtIndex:indexPath.row];
+    return [self decodeString:answerChoiceText];
 }
 
 - (NSUInteger)numberOfQuestions
@@ -51,6 +53,12 @@
 - (NSUInteger)numberOfChoicesInQuestion:(NSInteger)section
 {
     return [[[self.questions objectAtIndex:section] allAnswers] count];
+}
+
+- (NSString *)decodeString:(NSString *)encodedString
+{
+    NSAttributedString *formattedString = [[NSAttributedString alloc] initWithData:[encodedString dataUsingEncoding:NSUTF8StringEncoding] options:@{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType, NSCharacterEncodingDocumentAttribute: [NSNumber numberWithInt:NSUTF8StringEncoding]} documentAttributes:nil error:nil];
+    return formattedString.string;
 }
 
 @end

@@ -59,6 +59,12 @@
     NSLog(@"%@", [[[[_viewModel questions] objectAtIndex:indexPath.section] allAnswers] objectAtIndex:indexPath.row]);
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *questionHeaderView = [[QuestionHeaderView alloc] initWithFrame:CGRectZero questionNumber:section question:[self.viewModel getQuestionTextAtSection:section]];
+    return questionHeaderView;
+}
+
 #pragma mark UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -66,18 +72,13 @@
     return [self.viewModel numberOfQuestions];
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UIView *questionHeaderView = [[QuestionHeaderView alloc]initWithFrame:CGRectZero question:[self.viewModel getQuestionTextAtSection:section]];
-    return questionHeaderView;
-}
-
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.viewModel numberOfChoicesInQuestion:section];
 }
 
-- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
     UITableViewCell *questionCell = [tableView dequeueReusableCellWithIdentifier:@"question cell"];
     if (questionCell == nil) {
         questionCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"question cell"];

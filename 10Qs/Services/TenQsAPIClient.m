@@ -13,7 +13,6 @@
 @implementation TenQsAPIClient
 
 + (void)fetchQuestions:(void (^)(NSError *, NSArray<Question *> *))completion {
-    
     NSString *searchURLString = @"https://opentdb.com/api.php?amount=10";
     NSURL *url = [NSURL URLWithString:searchURLString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -24,7 +23,7 @@
         } else {
             if (data) {
                 NSMutableArray <Question *> *questions = [[NSMutableArray alloc] init];
-                NSDictionary *questionsResponse = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+                NSDictionary *questionsResponse = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
                 NSArray<NSDictionary *> *results = questionsResponse[@"results"];
                 if (error) {
                     completion(error, nil);

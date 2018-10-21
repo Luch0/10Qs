@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface QuestionHeaderView : UIView
 
-- (instancetype)initWithFrame:(CGRect)frame question:(NSString *)question;
+- (instancetype)initWithFrame:(CGRect)frame questionNumber:(NSInteger)number question:(NSString *)question;
 
 @end
 
